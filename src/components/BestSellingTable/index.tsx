@@ -1,5 +1,3 @@
-// src/components/BestSellingTable/index.tsx
-
 import React from "react";
 import styles from "./styles.module.css";
 import { Book } from "../../api/types";
@@ -26,7 +24,7 @@ const BestSellingTable: React.FC<BestSellingTableProps> = ({ books }) => {
               .map((book, index) => (
                 <tr key={index}>
                   <td>📖 {book.name}</td>
-                  <td>👤 {book.author}</td>
+                  <td>👤 {book.author.fullName}</td>
                 </tr>
               ))}
           </tbody>

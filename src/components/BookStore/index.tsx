@@ -45,7 +45,8 @@ const BookStore: React.FC<BookStoreProps> = ({ store }) => {
             {store.website}
           </a>
         </span>
-        <CountryFlag countryCode={store.countryCode} />
+
+        <CountryFlag country={store.country} />
       </div>
     </div>
   );

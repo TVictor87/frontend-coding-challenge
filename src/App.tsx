@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
-//import reactLogo from "./assets/react.svg";
-//import viteLogo from "/vite.svg";
-import "./App.css";
-
-import { apiGetBookStores } from "./api/apiGetBookStores";
-import { BookStoreData } from "./api/types";
-import BookStore from "./components/BookStore";
-import "./App.css";
 import { APP_NAME, APP_VERSION } from "./config";
+import { useEffect, useState } from "react";
+
+import { BookStoreData } from "./api/types";
+import { apiGetBookStores } from "./api/apiGetBookStores";
+import BookStore from "./components/BookStore";
+
+import "./App.css";
 
 const App: React.FC = () => {
   const [bookstores, setBookstores] = useState<BookStoreData[]>([]);
@@ -27,7 +25,7 @@ const App: React.FC = () => {
         {APP_NAME} - {APP_VERSION}
       </h1>
       {bookstores.map((store: BookStoreData) => (
-        <BookStore store={store} />
+        <BookStore key={store.id} store={store} />
       ))}
     </div>
   );

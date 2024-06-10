@@ -1,36 +1,37 @@
 export interface BookStoreData extends BookstoreAttributes {
   books: Book[];
 
-  countryCode: string;
+  country: Country;
 }
 
-export interface BookStoreResponse {
-  attributes: BookstoreAttributes;
-
-  relationships: {
-    books: {
-      data: Book[];
-    };
-
-    countries: {
-      data: {
-        id: string;
-      };
-    };
-  };
+export interface BookStoreResponse extends BookstoreAttributes {
+  countryId: number;
+  bookIds: number[];
 }
 
 export interface Book {
   id: number;
   name: string;
-  author: string;
+  author: Author;
   copiesSold: number;
 }
 
 export interface BookstoreAttributes {
+  id: number;
   storeImage: string;
   name: string;
   establishmentDate: Date;
   website: string;
   rating: number;
+}
+
+export interface Author {
+  id: number;
+  fullName: string;
+}
+
+export interface Country {
+  id: number;
+  name?: string;
+  code: string;
 }

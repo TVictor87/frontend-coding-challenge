@@ -1,58 +1,64 @@
-import type { Book, BookStoreData, BookStoreResponse } from "./types";
-// import { fakeBookStores } from "../mock/fakeBookStores";
-import { STORES_API_URL } from "../config";
+import type {
+  Book,
+  BookStoreData,
+  BookStoreResponse,
+  Author,
+  Country,
+} from "./types";
+
+import {
+  STORES_API_URL,
+  BOOKS_API_URL,
+  COUNTRIES_API_URL,
+  AUTHORS_API_URL,
+} from "../config";
 
 export const apiGetBookStores = async (): Promise<BookStoreData[]> => {
-  const response = await fetch(STORES_API_URL);
-  const jsonResponse = await response.json();
+  // Fetch all data from the APIs
+  const [storesResponse, booksResponse, countriesResponse, authorsResponse] =
+    await Promise.all([
+      fetch(STORES_API_URL),
+      fetch(BOOKS_API_URL),
+      fetch(COUNTRIES_API_URL),
+      fetch(AUTHORS_API_URL),
+    ]);
 
-  const bookStoresResponse: BookStoreResponse[] = jsonResponse?.data;
-  const includedResponse = jsonResponse?.included;
+  const stores = await storesResponse.json();
+  const books = await booksResponse.json();
+  const countries = await countriesResponse.json();
+  const authors = await authorsResponse.json();
 
-  const bookStores: BookStoreData[] = bookStoresResponse.map(
-    (store: BookStoreResponse): BookStoreData => {
-      const storeBooks: Book[] = store.relationships.books?.data.map(
-        (book: Book): Book => {
-          // Get Book Detail
-          const bookDetail = includedResponse.find(
-            (item: any) => item.type === "books" && item.id === book.id
-          );
-
-          // Get Author Detail
-          const authorDetail = includedResponse.find(
-            (item: any) =>
-              item.type === "authors" &&
-              item.id === bookDetail.relationships.author.data.id
-          );
-          return {
-            id: book.id,
-            name: bookDetail.attributes.name,
-            author: authorDetail.attributes.fullName,
-            copiesSold: bookDetail.attributes.copiesSold,
-          };
-        }
+  // Map the data to the structure we need
+  const bookStores: BookStoreData[] = stores.map((store: BookStoreResponse) => {
+    const storeBooks: Book[] = store.bookIds.map((bookId: number) => {
+      const bookDetail = books.find((book: Book) => book.id === bookId);
+      const authorDetail: Author = authors.find(
+        (author: Author) => author.id === bookDetail.authorId
       );
 
-      // GetCountryCode
-      const countryCode = includedResponse.find(
-        (item: any) =>
-          item.type === "countries" &&
-          item.id === store.relationships.countries.data.id
-      )?.attributes?.code;
-
       return {
-        storeImage: store.attributes.storeImage,
-        name: store.attributes.name,
-        establishmentDate: new Date(store.attributes.establishmentDate),
-        website: store.attributes.website,
-        rating: store.attributes.rating,
-
-        books: storeBooks,
-
-        countryCode: countryCode,
+        id: bookDetail.id,
+        name: bookDetail.name,
+        author: authorDetail,
+        copiesSold: bookDetail.copiesSold,
       };
-    }
-  );
+    });
+
+    const countryDetail: Country = countries.find(
+      (country: any) => country.id === store.countryId
+    );
+
+    return {
+      id: store.id,
+      storeImage: store.storeImage,
+      name: store.name,
+      establishmentDate: new Date(store.establishmentDate),
+      website: store.website,
+      rating: store.rating,
+      books: storeBooks,
+      country: countryDetail,
+    };
+  });
 
   return bookStores;
 };

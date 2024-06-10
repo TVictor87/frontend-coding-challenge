@@ -1,0 +1,138 @@
+{
+  "stores": [
+    {
+      "id": "1",
+      "name": "MicroBooks",
+      "website": "https://www.micro-books-store.com",
+      "rating": 4,
+      "storeImage": "https://i.pinimg.com/736x/51/a2/47/51a247e0d1785b89b70a17a1c8f31ac5--melbourne-australia-second-hand.jpg",
+      "establishmentDate": "1995-02-09T00:00:00+0000",
+      "countryId": "1",
+      "bookIds": ["1", "2", "8"]
+    },
+    {
+      "id": "2",
+      "name": "SquirroBooks",
+      "website": "https://www.squirro.com",
+      "rating": 5,
+      "storeImage": "https://i.ytimg.com/vi/g-5A1EJ4KMg/maxresdefault.jpg",
+      "establishmentDate": "2011-01-17T00:00:00+0000",
+      "countryId": "3",
+      "bookIds": ["1", "2", "3", "4", "5", "6", "7", "8"]
+    },
+    {
+      "id": "3",
+      "name": "CryptoBook",
+      "website": "https://www.crypto-book-store.com",
+      "rating": 3,
+      "storeImage": "https://www.crypto-news-flash.com/wp-content/uploads/2020/11/Bitcoin-Store.png",
+      "establishmentDate": "1971-10-10T00:00:00+0000",
+      "countryId": "1",
+      "bookIds": ["4"]
+    },
+    {
+      "id": "4",
+      "name": "ChipzStore",
+      "website": "https://www.chipz-store-books.com",
+      "rating": 5,
+      "storeImage": "http://3.bp.blogspot.com/-3ofq2Hhzjs4/UhRo3UMXiBI/AAAAAAAAGeQ/Z_1wag7ouyI/s1600/empty+shelves.jpg",
+      "establishmentDate": "1988-10-10T00:00:00+0000",
+      "countryId": "2",
+      "bookIds": []
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "name": "JavaScript: The Good Parts",
+      "copiesSold": 154,
+      "authorId": "1"
+    },
+    {
+      "id": "2",
+      "name": "JavaScript: The Definitive Guide",
+      "copiesSold": 66,
+      "authorId": "2"
+    },
+    {
+      "id": "3",
+      "name": "Learn JavaScript Visually",
+      "copiesSold": 78,
+      "authorId": "3"
+    },
+    {
+      "id": "4",
+      "name": "Eloquent JavaScript",
+      "copiesSold": 111,
+      "authorId": "4"
+    },
+    {
+      "id": "5",
+      "name": "How JavaScript Works",
+      "copiesSold": 33,
+      "authorId": "1"
+    },
+    {
+      "id": "6",
+      "name": "Beautiful Code: Leading Programmers Explain How They Think",
+      "copiesSold": 66,
+      "authorId": "5"
+    },
+    {
+      "id": "7",
+      "name": "Canvas Pocket Reference: Scripted Graphics for HTML5",
+      "copiesSold": 42,
+      "authorId": "2"
+    },
+    {
+      "id": "8",
+      "name": "JavaScript Pocket Reference: Activate Your Web Pages",
+      "copiesSold": 47,
+      "authorId": "2"
+    }
+  ],
+  "countries": [
+    {
+      "id": "1",
+      "code": "AU"
+    },
+    {
+      "id": "2",
+      "code": "HR"
+    },
+    {
+      "id": "3",
+      "code": "CH"
+    },
+    {
+      "id": "4",
+      "code": "IS"
+    },
+    {
+      "id": "5",
+      "code": "SE"
+    }
+  ],
+  "authors": [
+    {
+      "id": "1",
+      "fullName": "Douglas Crockford"
+    },
+    {
+      "id": "2",
+      "fullName": "David Flanagan"
+    },
+    {
+      "id": "3",
+      "fullName": "Ivelin Demirov"
+    },
+    {
+      "id": "4",
+      "fullName": "Marijn Haverbeke"
+    },
+    {
+      "id": "5",
+      "fullName": "Greg Wilson"
+    }
+  ]
+}

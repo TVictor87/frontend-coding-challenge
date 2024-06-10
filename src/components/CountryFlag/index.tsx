@@ -2,31 +2,32 @@ import React from "react";
 import { apiGetCountryFlag } from "../../api/apiGetCountryFlag";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import { Country } from "../../api/types";
 
 interface CountryFlagProps {
-  countryCode: string;
+  country: Country;
 }
 
-const CountryFlag: React.FC<CountryFlagProps> = ({ countryCode }) => {
+const CountryFlag: React.FC<CountryFlagProps> = ({ country }) => {
   const [flagUrl, setFlagUrl] = useState<string>("");
 
   useEffect(() => {
     const fetchFlag = async () => {
       try {
-        const flag = await apiGetCountryFlag(countryCode);
+        const flag = await apiGetCountryFlag(country?.code);
         setFlagUrl(flag);
       } catch (error) {
-        console.error(`Error fetching flag for ${countryCode}: ${error}`);
+        console.error(`Error fetching flag for ${country}: ${error}`);
       }
     };
     fetchFlag();
-  }, [countryCode]);
+  }, [country?.code]);
 
   return flagUrl ? (
     <div className={styles.flag}>
       <img
         src={flagUrl}
-        alt={`${countryCode} flag`}
+        alt={`${country?.code} flag`}
         className={styles.flagImage}
       />
     </div>
