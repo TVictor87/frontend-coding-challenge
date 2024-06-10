@@ -1,0 +1,18 @@
+.flag {
+  display: flex;
+  align-items: center;
+}
+
+.flagImage {
+  width: 40px;
+  margin-left: 10px;
+}
+
+  
+  @media (min-width: 768px) {
+    .flagImage {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  
