@@ -11,7 +11,7 @@ export const COUNTRY_FLAG_API_URL = "https://restcountries.com/v3.1/alpha";
 
 // Static Information
 export const APP_NAME = "Book Store";
-export const APP_VERSION = "1.0.0";
+export const APP_VERSION = "2.0.0";
 
 // Number of books to display per store
 export const BOOKS_PER_STORE = 2;
